@@ -1,0 +1,25 @@
+---
+title: "Module 06: Reveal.js Presentations"
+subtitle: "IBM 6500, Customer Insight Methods & Survey Research | Cal Poly Pomona"
+author: "Leeann Lewis-Waddell"
+format:
+  html:
+    theme: cosmo
+    toc: false
+---
+
+This site collects my Module 06 work on building presentation slides with Quarto and Reveal.js.
+
+## Assignments
+
+**M06-1: RKR Newsletter Proposal Slides**
+: A Reveal.js proposal for my MSDM culminating experience project, testing how the design of The Restaurant at Kellogg Ranch's section in The Collins Concierge affects reservation clicks. Built on the serif theme with the CPP Design Toolkit colors.
+: [Open the slides](M06-1/rkr-newsletter-proposal.html){target="_blank"}
+
+**Reflection Essay: Advanced Data Wrangling**
+: My reflection on Reveal.js and the new concepts from this module.
+: [Read the essay](reflection-essay.html)
+
+## Source Code
+
+All files, data, and code are on [GitHub](https://github.com/lewiswaddell/M06).

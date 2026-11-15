@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+/.quarto/
+._*
+.DS_Store
+*.zip
+_to_delete/
+# rendered copies outside docs/ (docs/ is what GitHub Pages serves)
+/*.html
+/M06-1/*.html

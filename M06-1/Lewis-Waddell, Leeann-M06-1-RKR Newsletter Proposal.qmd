@@ -1,0 +1,456 @@
+---
+title: "Newsletter Design and Reservation Growth"
+output-file: rkr-newsletter-proposal.html
+subtitle: "Proposal Presentation: The Restaurant at Kellogg Ranch"
+author: "Leeann Lewis-Waddell"
+institute: "IBM 6500, Cal Poly Pomona"
+date: "`r Sys.Date()`"
+date-format: long
+title-slide-attributes:
+  data-background-image: images/rkr-logo-green.png
+  data-background-size: 58%
+  data-background-position: 50% 14%
+format:
+  revealjs:
+    theme: [serif, cpp-rkr.scss]
+    width: 1600
+    height: 900
+    footer: "Newsletter Design and Reservation Growth | The Restaurant at Kellogg Ranch"
+    logo: images/rkr-logo-green.png
+    transition: slide
+    transition-speed: default
+    incremental: false
+    toc: true
+    toc-depth: 1
+    toc-title: "Contents"
+    slide-number: true
+    scrollable: true
+    smaller: true
+    code-fold: false
+    code-overflow: wrap
+    code-copy: true
+    number-sections: false
+    number-depth: 5
+    embed-resources: true
+    css: styles.css
+    menu:
+      side: left
+      width: normal
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+bibliography: references.bib
+csl: american-marketing-association.csl
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(dplyr)
+library(readr)
+library(tidyr)
+library(purrr)
+library(stringr)
+library(ggplot2)
+library(knitr)
+```
+
+```{r}
+#| label: load-data
+#| echo: false
+
+# Canva website insights exports for The Collins Concierge (last 12 weeks).
+# File names are export timestamps, so sorting them keeps issue order.
+files <- list.files("data/concierge-canva", pattern = "\\.csv$", full.names = TRUE) |>
+  sort()
+
+raw_files <- tibble(file = files, md5 = unname(tools::md5sum(files)))
+n_files   <- nrow(raw_files)
+
+# Drop byte-identical duplicate exports
+unique_files <- raw_files |> distinct(md5, .keep_all = TRUE)
+n_dupes      <- n_files - nrow(unique_files)
+
+issues <- unique_files |>
+  mutate(issue = row_number(),
+         data  = map(file, read_csv, show_col_types = FALSE)) |>
+  select(issue, data) |>
+  unnest(data)
+```
+
+# Introduction {background-color="#005030" .cpp-section}
+
+The Collins Concierge is a channel RKR already owns. This project asks how to make its RKR section work harder.
+
+## Problem Statement
+
+:::: columns
+::: {.column width="55%"}
+::: incremental
+- RKR is moving from an instructional restaurant to a **dual model** that adds stand-alone service days [@kwok2026].
+- Stand-alone days cannot rely on state funding, so they need **steady reservations** to stay viable [@kwok2026].
+- The Collins Concierge already reaches faculty and staff, the segment that best fits RKR's weekday lunch hours [@rkr_contact].
+:::
+:::
+
+::: {.column width="45%"}
+::: {.card .rose .fragment .fade-up}
+**The gap**
+
+The RKR section is mostly text, and the "Reserve a Table" button sits at the bottom, below the hours.^[Based on the team's review of current Concierge issues, Fall 2026.] Readers who skim can scroll past it.
+:::
+:::
+::::
+
+::: notes
+The business problem comes straight from Dr. Kwok's proposal: the stand-alone service days need their own demand. The newsletter is the cheapest place to start because RKR already owns it and the audience is already on campus. The issue is the design: text heavy, button at the bottom.
+:::
+
+## Analytics Objective {transition="zoom"}
+
+::: {.card .gold}
+**PO1:** Strengthen the visual design of RKR's section of The Collins Concierge to drive reservation growth.
+:::
+
+. . .
+
+::: card
+**AO1:** Compare [RKR click rates]{.fragment .highlight-gold} and [attributed OpenTable reservations]{.fragment .highlight-gold} across RKR newsletter section designs, testing [button placement in Fall 2026]{.fragment .highlight-red} and [image versus video in Spring 2027]{.fragment .highlight-red}.
+:::
+
+. . .
+
+<span class="pill">Fall 2026</span> Move "Reserve a Table" to the upper left, compared with past issues
+
+<span class="pill gold">Spring 2027</span> A/B test image vs. video, with the button fixed in the upper left
+
+::: notes
+One change at a time. Fall isolates placement. Spring isolates media. If both changed at once, there would be no way to tell which one moved clicks.
+:::
+
+## Importance
+
+:::: columns
+::: {.column width="50%"}
+::: {.fragment .fade-in-then-semi-out}
+### Reaches the primary segment
+Faculty and staff rated highest in the team's segment analysis, and the Concierge reaches them directly.
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+### Low cost, already owned
+No ad spend. The section runs every week, so each issue is a chance to test.
+:::
+
+::: {.fragment .fade-in}
+### Measurable end to end
+Canva tracks views and clicks; version-specific links can tie clicks to OpenTable bookings.
+:::
+:::
+
+::: {.column width="50%"}
+::: {.r-fit-text .fragment .fade-up}
+One change\
+at a time.
+:::
+:::
+::::
+
+::: aside
+Clicks show interest, not bookings. Reservations remain the secondary, validating measure [@kumar2021].
+:::
+
+# Literature Review {background-color="#005030" .cpp-section}
+
+Three frameworks shape how the test is built: the email response process, visual attention, and cognitive load.
+
+## Well-established Models
+
+| Framework | Key finding | What it means for AO1 |
+|------------------------|------------------------|------------------------|
+| **Email response process** | Newsletter response moves from seeing, to engaging, to acting; format tests against a control work well [@hartemo2016] | Use past issues as the control baseline |
+| **Relational vs. transactional metrics** | Across 811 newsletters, clicks had the strongest link to eventual purchase [@kumar2021] | Click-through rate is the primary metric |
+| **Visual heuristics** | Readers scan newsletters in a U-shape; upper-left links earn higher CTR [@kumar2018] | Fall moves the button to the upper left |
+| **Visual attention** | Large images drew more attention than prices or codes, and attention mapped to purchase [@skourou2024] | Spring tests image vs. video |
+| **Cognitive load** | GIFs and emojis together raised unsubscribes, though neither hurt CTR alone [@bashirzadeh2022] | Add only one visual element at a time |
+
+::: notes
+Industry guides from Semrush and OpenTable point the same way: key information and a bold button near the top, strong food photos, and test one variable at a time over at least two weeks.
+:::
+
+## Challenges in the Literature
+
+:::: columns
+::: {.column width="50%"}
+::: {.card .rose}
+**Inbox overload**
+
+University recipients reported about 30 bulk emails a week and trashed 22% of newsletters [@kong2021]. Academics at one business school received 324 organizational bulk emails in a year [@bicudodecastro2025].
+:::
+:::
+
+::: {.column width="50%"}
+::: {.card .teal}
+**Email needs a clear role**
+
+Readers resisted email that did not fit their customer journey [@zunac2022].
+:::
+:::
+::::
+
+. . .
+
+::: {.card .gold}
+**Implication:** A redesign may not move CTR if readers never reach the RKR section. AO1 tracks **views alongside clicks** to separate a design problem from a readership problem.
+:::
+
+## Adequacy of the Information
+
+:::: columns
+::: {.column width="50%"}
+### Strengths
+- Covers attention, button placement, media, and fatigue
+- Findings line up with industry guidance [@go2024; @jones2023]
+- Directly actionable for a newsletter section
+:::
+
+::: {.column width="50%"}
+### Limitations
+- Industry guides come from companies selling services
+- The eye-tracking study had a small sample [@skourou2024]
+- The email-role study was mostly female participants [@zunac2022]
+:::
+::::
+
+. . .
+
+::: {.card .gold}
+**The gap:** No reviewed study looks at a **restaurant section inside a university newsletter**. Primary data from the Concierge fills it.
+:::
+
+## Need for Additional Analysis
+
+::: incremental
+1. **Build a baseline** of RKR click rates from past Concierge issues in Canva.
+2. **Fall 2026:** measure the effect of moving the button to the upper left.
+3. **Spring 2027:** alternate image and video issues weekly, button fixed.
+4. **Tag links by version** so OpenTable bookings trace back to the design.
+5. **Flag unusual weeks** such as holidays, finals, and campus events.
+:::
+
+::: notes
+Clicks will not capture everyone. Walk-in guests and Bronco Bucks payers may never click, so a "How did you hear about us?" question at booking helps account for those visits.
+:::
+
+# Methods {background-color="#005030" .cpp-section}
+
+Secondary data from Canva website insights, analyzed issue by issue.
+
+## Data and Sampling
+
+:::: columns
+::: {.column width="55%"}
+- **Source:** Canva website insights for The Collins Concierge, exported as one CSV per issue
+- **Window:** the last 12 weeks of issues
+- **Sampling:** all available issues in the window (non-probability, convenience)
+- **Cleaning:** `r n_files` exports received; `r n_dupes` byte-identical duplicate removed, leaving **`r n_distinct(issues$issue)` issues**
+:::
+
+::: {.column width="45%"}
+::: card
+::: stat
+`r format(sum(issues$Count[issues$Dimension == "country"]), big.mark = ",")`
+:::
+::: stat-label
+total page views across `r n_distinct(issues$issue)` issues
+:::
+:::
+:::
+::::
+
+::: aside
+The "Reserve a Table" button links to the RKR website rather than straight to OpenTable, so clicks to cpp.edu/rkr pages are the measurable step before a booking.
+:::
+
+## Data Wrangling
+
+Each export stacks four dimensions (country, device, source, link) in long format. The code below collapses them to one row per issue.
+
+```{r}
+#| label: wrangle
+#| code-line-numbers: "|1-2|4|7-8|10"
+issue_summary <- issues |>
+  group_by(issue) |>
+  summarise(
+    views       = sum(Count[Dimension == "country"]),
+    mobile      = sum(Count[Dimension == "device" & Name == "Mobile"]),
+    link_clicks = sum(Count[Dimension == "link"]),
+    rkr_clicks  = sum(Count[Dimension == "link" &
+                            str_detect(Name, "cpp\\.edu/rkr")]),
+    .groups = "drop") |>
+  mutate(ctr = rkr_clicks / views)
+```
+
+::: notes
+Lines 1 and 2: start from the stacked data and group by issue. Line 4: views come from the country rows, which sum to total page views. Lines 7 and 8: RKR clicks are any link to cpp.edu/rkr, which covers both the homepage and the menu page. Line 10: click rate is RKR clicks divided by views.
+:::
+
+## Sample Characteristics
+
+```{r}
+#| label: sample-summary
+#| echo: false
+
+pooled_ctr  <- sum(issue_summary$rkr_clicks) / sum(issue_summary$views)
+mobile_share <- sum(issue_summary$mobile) / sum(issue_summary$views)
+zero_issues <- sum(issue_summary$rkr_clicks == 0)
+```
+
+:::: columns
+::: {.column width="40%"}
+- Average views per issue: **`r round(mean(issue_summary$views))`**
+- Mobile share of views: **`r scales::percent(mobile_share, accuracy = 1)`**
+- Total RKR clicks: **`r sum(issue_summary$rkr_clicks)`**
+- Issues with zero RKR clicks: **`r zero_issues`**
+:::
+
+::: {.column width="60%"}
+```{r}
+#| label: sample-table
+#| echo: false
+
+issue_summary |>
+  transmute(Issue = issue,
+            Views = views,
+            `Mobile %` = scales::percent(mobile / views, accuracy = 1),
+            `All link clicks` = link_clicks,
+            `RKR clicks` = rkr_clicks,
+            `RKR CTR` = scales::percent(ctr, accuracy = 0.1)) |>
+  kable(align = "rrrrrr")
+```
+:::
+::::
+
+## Measures
+
+| Variable | Measurement or coding | Role in AO1 |
+|------------------------|------------------------|------------------------|
+| Design condition | Past issues vs. upper-left button (Fall); photo vs. video (Spring) | Independent variable |
+| Issue date | Publication date of each weekly issue | Links clicks and bookings to the right condition |
+| Page views | Views reported by Canva for each issue | Denominator for click rate |
+| RKR clicks | Clicks to cpp.edu/rkr pages from the RKR section | Numerator for click rate |
+| Click-through rate | RKR clicks ÷ page views | Primary outcome |
+| Attributed reservations | Weekly OpenTable bookings through version-specific links | Secondary outcome |
+| Unusual weeks | Holidays, breaks, campus events, RKR promotions | Context flag |
+
+## Baseline: RKR Click Rate by Issue {transition="fade"}
+
+```{r}
+#| label: baseline-chart
+#| echo: false
+#| fig-width: 14
+#| fig-height: 6
+#| fig-align: center
+
+ggplot(issue_summary, aes(x = factor(issue), y = ctr * 100)) +
+  geom_col(fill = "#005030", width = 0.7) +
+  geom_hline(yintercept = pooled_ctr * 100, colour = "#FFB81C",
+             linewidth = 1.4, linetype = "dashed") +
+  annotate("label", x = 1.6, y = pooled_ctr * 100,
+           label = paste0("Pooled baseline: ",
+                          scales::percent(pooled_ctr, accuracy = 0.1)),
+           fill = "#FFB81C", colour = "#121212", size = 5, label.size = 0) +
+  geom_text(aes(label = rkr_clicks), vjust = -0.5, size = 5,
+            colour = "#121212") +
+  labs(x = "Concierge issue (oldest to newest)",
+       y = "RKR clicks per 100 views",
+       caption = "Bar labels show RKR click counts. Source: Canva website insights.") +
+  theme_minimal(base_size = 18) +
+  theme(plot.background  = element_rect(fill = "#F2EEE8", colour = NA),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+::: notes
+This is the pre-test baseline that Fall's button move will be compared against. Clicks to RKR are low across the board, which is exactly the problem AO1 is designed to address.
+:::
+
+## Analytics Methods
+
+:::: columns
+::: {.column width="50%"}
+### A/B testing in two phases
+Only one element changes per phase, so any difference in clicks can be traced to that change.
+
+. . .
+
+### Two-proportion z-test
+Compares click rates between conditions at α = 0.05:
+
+$$
+z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}
+$$
+:::
+
+::: {.column width="50%"}
+::: {.fragment .fade-up}
+### Independent-samples t-test
+Compares the average weekly OpenTable reservations attributed to each design.
+:::
+
+::: {.fragment .fade-up}
+### Why these methods
+- The z-test is the standard way to compare two rates
+- The t-test fits weekly reservation counts across two groups
+- Together they follow the reader's path from **view → click → booking** [@hartemo2016]
+:::
+:::
+::::
+
+# References
+
+::: {#refs}
+:::
+
+# Appendix {background-color="#005030" .cpp-section}
+
+Links, data notes, and source files.
+
+## Clickable Links
+
+:::: columns
+::: {.column width="50%"}
+::: link-btn
+[Group 9 CEP Report (GitHub Pages)](https://lewiswaddell.github.io/GP9CEP-RKR.Kwok/){target="_blank"}
+
+[Group 9 GitHub Repository](https://github.com/lewiswaddell/GP9CEP-RKR.Kwok){target="_blank"}
+
+[The Restaurant at Kellogg Ranch](https://www.cpp.edu/rkr/){target="_blank"}
+
+[RKR Menu Page](https://www.cpp.edu/rkr/menu.shtml){target="_blank"}
+:::
+:::
+
+::: {.column width="50%"}
+::: link-btn
+[RKR on Instagram](https://www.instagram.com/rkr_cpp/){target="_blank"}
+
+[CPP Design Toolkit](https://www.cpp.edu/brand/toolkits/design.shtml){target="_blank"}
+
+[Quarto Reveal.js Documentation](https://quarto.org/docs/presentations/revealjs/){target="_blank"}
+
+[Quarto Pub](https://quartopub.com/){target="_blank"}
+:::
+:::
+::::
+
+## Data Notes
+
+- **Files:** `r n_files` Canva CSV exports in `data/concierge-canva/`, one per issue
+- **Duplicates:** `r n_dupes` export was byte-identical to another and was removed with an MD5 check
+- **Issue order:** files are sorted by their export timestamp, which follows publication order
+- **RKR clicks:** any link containing `cpp.edu/rkr`; no direct OpenTable links appear in the exports
+- **Views:** sum of country rows, which matches total page views reported by Canva
+- **Not yet available:** issue dates, the first issue with the upper-left button, and OpenTable reservations by link

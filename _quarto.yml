@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - "Lewis-Waddell, Leeann-M06-Reflection Essay-Adv Data-Wrangling.qmd"
+    - "M06-1/Lewis-Waddell, Leeann-M06-1-RKR Newsletter Proposal.qmd"
+
+website:
+  title: "IBM 6500 | Module 06"
+  site-url: https://lewiswaddell.github.io/M06/
+  repo-url: https://github.com/lewiswaddell/M06
+  navbar:
+    background: "#005030"
+    foreground: "#FFFFFF"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: "Lewis-Waddell, Leeann-M06-Reflection Essay-Adv Data-Wrangling.qmd"
+        text: Reflection Essay
+      - href: "M06-1/Lewis-Waddell, Leeann-M06-1-RKR Newsletter Proposal.qmd"
+        text: RKR Proposal Slides
+    right:
+      - icon: github
+        href: https://github.com/lewiswaddell/M06

@@ -1,0 +1,108 @@
+/*-- scss:defaults --*/
+
+// ---------------------------------------------------------------
+// Cal Poly Pomona brand palette (CPP Design Toolkit)
+// https://www.cpp.edu/brand/toolkits/design.shtml
+// Layered on top of the ready-made "serif" Reveal.js theme.
+// ---------------------------------------------------------------
+$cpp-green:    #005030;
+$cpp-gold:     #FFB81C;
+$cpp-avocado:  #A4D65E;
+$cpp-citrus:   #FF7500;
+$cpp-teal:     #00838A;
+$cpp-baybrown: #CFBAB0;
+$cpp-black:    #121212;
+$cpp-rose:     #B52B4C;
+$cpp-eggshell: #F2EEE8;
+$cpp-white:    #FFFFFF;
+
+// Brand fonts load if installed on the presenting computer;
+// otherwise the serif theme's Palatino stack takes over.
+$font-family-sans-serif: "Usual", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+$presentation-heading-font: "Proxima Sera", "Transducer CPP", "Palatino Linotype", Palatino, serif;
+
+// Override the serif theme's variables
+$body-bg: $cpp-eggshell;
+$body-color: $cpp-black;
+$link-color: $cpp-teal;
+$link-color-hover: $cpp-green;
+$selection-bg: $cpp-gold;
+$presentation-heading-color: $cpp-green;
+$presentation-heading-text-transform: none;
+$presentation-heading-font-weight: 700;
+$presentation-h1-font-size: 2.4em;
+$presentation-h2-font-size: 1.6em;
+$presentation-h3-font-size: 1.2em;
+$presentation-font-size-root: 42px;
+
+$code-block-bg: #FFFFFF;
+$code-block-border-color: $cpp-baybrown;
+$code-color: $cpp-rose;
+
+/*-- scss:rules --*/
+
+// Gold rule under every slide title
+.reveal h2 {
+  border-bottom: 4px solid $cpp-gold;
+  padding-bottom: 0.15em;
+  margin-bottom: 0.6em;
+}
+
+// Section (H1) slides: CPP Green background (set per slide with
+// background-color) and a gold headline. Green + gold is an
+// approved CPP color pairing.
+.reveal section.cpp-section h1 {
+  color: $cpp-gold;
+  border: none;
+}
+.reveal section.cpp-section p,
+.reveal section.cpp-section li {
+  color: $cpp-white;
+}
+
+// Title slide
+.reveal .quarto-title-block .title {
+  color: $cpp-green;
+  margin-top: 3em;
+  font-size: 2.2em;
+}
+.reveal .quarto-title-block .subtitle {
+  color: $cpp-teal;
+  font-style: italic;
+}
+
+// Bullet markers in CPP Gold
+.reveal ul li::marker {
+  color: $cpp-gold;
+}
+.reveal ul ul li::marker {
+  color: $cpp-teal;
+}
+
+// Tables: green header row, light rows
+.reveal table thead th {
+  background-color: $cpp-green;
+  color: $cpp-white;
+  border-bottom: 3px solid $cpp-gold;
+}
+.reveal table tbody tr:nth-child(even) {
+  background-color: rgba($cpp-baybrown, 0.25);
+}
+
+// Progress bar and controls in brand colors
+.reveal .progress span {
+  background: $cpp-gold;
+}
+.reveal .controls {
+  color: $cpp-green;
+}
+
+// Footer and slide number
+.reveal .footer {
+  color: $cpp-green;
+  font-size: 0.45em;
+}
+.reveal .slide-number {
+  color: $cpp-green !important;
+  background-color: transparent !important;
+}

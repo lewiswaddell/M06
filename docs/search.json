@@ -1,0 +1,135 @@
+[
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#problem-statement",
+    "href": "M06-1/rkr-newsletter-proposal.html#problem-statement",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Problem Statement",
+    "text": "Problem Statement\n\n\n\nRKR is moving from an instructional restaurant to a dual model that adds stand-alone service days (Kwok 2026).\nStand-alone days cannot rely on state funding, so they need steady reservations to stay viable (Kwok 2026).\nThe Collins Concierge already reaches faculty and staff, the segment that best fits RKR’s weekday lunch hours (The Restaurant at Kellogg Ranch n.d.).\n\n\n\nThe gap\nThe RKR section is mostly text, and the “Reserve a Table” button sits at the bottom, below the hours.1 Readers who skim can scroll past it.\n\n\n\nThe business problem comes straight from Dr. Kwok’s proposal: the stand-alone service days need their own demand. The newsletter is the cheapest place to start because RKR already owns it and the audience is already on campus. The issue is the design: text heavy, button at the bottom.\n\nBased on the team’s review of current Concierge issues, Fall 2026."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#analytics-objective",
+    "href": "M06-1/rkr-newsletter-proposal.html#analytics-objective",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Analytics Objective",
+    "text": "Analytics Objective\n\nPO1: Strengthen the visual design of RKR’s section of The Collins Concierge to drive reservation growth.\n\n\n\nAO1: Compare RKR click rates and attributed OpenTable reservations across RKR newsletter section designs, testing button placement in Fall 2026 and image versus video in Spring 2027.\n\n\n\nFall 2026 Move “Reserve a Table” to the upper left, compared with past issues\nSpring 2027 A/B test image vs. video, with the button fixed in the upper left\n\nOne change at a time. Fall isolates placement. Spring isolates media. If both changed at once, there would be no way to tell which one moved clicks."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#importance",
+    "href": "M06-1/rkr-newsletter-proposal.html#importance",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Importance",
+    "text": "Importance\n\n\n\nReaches the primary segment\nFaculty and staff rated highest in the team’s segment analysis, and the Concierge reaches them directly.\n\n\nLow cost, already owned\nNo ad spend. The section runs every week, so each issue is a chance to test.\n\n\nMeasurable end to end\nCanva tracks views and clicks; version-specific links can tie clicks to OpenTable bookings.\n\n\n\nOne change\nat a time.\n\n\n\n\nClicks show interest, not bookings. Reservations remain the secondary, validating measure (Kumar 2021)."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#well-established-models",
+    "href": "M06-1/rkr-newsletter-proposal.html#well-established-models",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Well-established Models",
+    "text": "Well-established Models\n\n\n\n\n\n\n\n\nFramework\nKey finding\nWhat it means for AO1\n\n\n\n\nEmail response process\nNewsletter response moves from seeing, to engaging, to acting; format tests against a control work well (Hartemo, Suomi, and Hakala 2016)\nUse past issues as the control baseline\n\n\nRelational vs. transactional metrics\nAcross 811 newsletters, clicks had the strongest link to eventual purchase (Kumar 2021)\nClick-through rate is the primary metric\n\n\nVisual heuristics\nReaders scan newsletters in a U-shape; upper-left links earn higher CTR (Kumar and Salo 2018)\nFall moves the button to the upper left\n\n\nVisual attention\nLarge images drew more attention than prices or codes, and attention mapped to purchase (Skourou and Spiliotopoulos 2024)\nSpring tests image vs. video\n\n\nCognitive load\nGIFs and emojis together raised unsubscribes, though neither hurt CTR alone (Bashirzadeh, Mai, and Faure 2022)\nAdd only one visual element at a time\n\n\n\n\nIndustry guides from Semrush and OpenTable point the same way: key information and a bold button near the top, strong food photos, and test one variable at a time over at least two weeks."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#challenges-in-the-literature",
+    "href": "M06-1/rkr-newsletter-proposal.html#challenges-in-the-literature",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Challenges in the Literature",
+    "text": "Challenges in the Literature\n\n\n\nInbox overload\nUniversity recipients reported about 30 bulk emails a week and trashed 22% of newsletters (Kong, Zhu, and Konstan 2021). Academics at one business school received 324 organizational bulk emails in a year (Bicudo De Castro 2025).\n\n\n\nEmail needs a clear role\nReaders resisted email that did not fit their customer journey (Zunac, Miletic, and Kozina 2022).\n\n\n\n\nImplication: A redesign may not move CTR if readers never reach the RKR section. AO1 tracks views alongside clicks to separate a design problem from a readership problem."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#adequacy-of-the-information",
+    "href": "M06-1/rkr-newsletter-proposal.html#adequacy-of-the-information",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Adequacy of the Information",
+    "text": "Adequacy of the Information\n\n\nStrengths\n\nCovers attention, button placement, media, and fatigue\nFindings line up with industry guidance (Go 2024; Jones 2023)\nDirectly actionable for a newsletter section\n\n\nLimitations\n\nIndustry guides come from companies selling services\nThe eye-tracking study had a small sample (Skourou and Spiliotopoulos 2024)\nThe email-role study was mostly female participants (Zunac, Miletic, and Kozina 2022)\n\n\n\n\nThe gap: No reviewed study looks at a restaurant section inside a university newsletter. Primary data from the Concierge fills it."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#need-for-additional-analysis",
+    "href": "M06-1/rkr-newsletter-proposal.html#need-for-additional-analysis",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Need for Additional Analysis",
+    "text": "Need for Additional Analysis\n\nBuild a baseline of RKR click rates from past Concierge issues in Canva.\nFall 2026: measure the effect of moving the button to the upper left.\nSpring 2027: alternate image and video issues weekly, button fixed.\nTag links by version so OpenTable bookings trace back to the design.\nFlag unusual weeks such as holidays, finals, and campus events.\n\n\nClicks will not capture everyone. Walk-in guests and Bronco Bucks payers may never click, so a “How did you hear about us?” question at booking helps account for those visits."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#data-and-sampling",
+    "href": "M06-1/rkr-newsletter-proposal.html#data-and-sampling",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Data and Sampling",
+    "text": "Data and Sampling\n\n\n\nSource: Canva website insights for The Collins Concierge, exported as one CSV per issue\nWindow: the last 12 weeks of issues\nSampling: all available issues in the window (non-probability, convenience)\nCleaning: 14 exports received; 1 byte-identical duplicate removed, leaving 13 issues\n\n\n\n\n2,681\n\n\ntotal page views across 13 issues\n\n\n\n\n\nThe “Reserve a Table” button links to the RKR website rather than straight to OpenTable, so clicks to cpp.edu/rkr pages are the measurable step before a booking."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#data-wrangling",
+    "href": "M06-1/rkr-newsletter-proposal.html#data-wrangling",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Data Wrangling",
+    "text": "Data Wrangling\nEach export stacks four dimensions (country, device, source, link) in long format. The code below collapses them to one row per issue.\n\nissue_summary &lt;- issues |&gt;\n  group_by(issue) |&gt;\n  summarise(\n    views       = sum(Count[Dimension == \"country\"]),\n    mobile      = sum(Count[Dimension == \"device\" & Name == \"Mobile\"]),\n    link_clicks = sum(Count[Dimension == \"link\"]),\n    rkr_clicks  = sum(Count[Dimension == \"link\" &\n                            str_detect(Name, \"cpp\\\\.edu/rkr\")]),\n    .groups = \"drop\") |&gt;\n  mutate(ctr = rkr_clicks / views)\n\n\nLines 1 and 2: start from the stacked data and group by issue. Line 4: views come from the country rows, which sum to total page views. Lines 7 and 8: RKR clicks are any link to cpp.edu/rkr, which covers both the homepage and the menu page. Line 10: click rate is RKR clicks divided by views."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#sample-characteristics",
+    "href": "M06-1/rkr-newsletter-proposal.html#sample-characteristics",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Sample Characteristics",
+    "text": "Sample Characteristics\n\n\n\nAverage views per issue: 206\nMobile share of views: 41%\nTotal RKR clicks: 50\nIssues with zero RKR clicks: 2\n\n\n\n\n\n\n\nIssue\nViews\nMobile %\nAll link clicks\nRKR clicks\nRKR CTR\n\n\n\n\n1\n98\n41%\n38\n0\n0.0%\n\n\n2\n85\n45%\n25\n0\n0.0%\n\n\n3\n428\n40%\n145\n1\n0.2%\n\n\n4\n238\n37%\n133\n1\n0.4%\n\n\n5\n204\n37%\n127\n12\n5.9%\n\n\n6\n228\n37%\n116\n4\n1.8%\n\n\n7\n190\n39%\n99\n4\n2.1%\n\n\n8\n180\n38%\n74\n6\n3.3%\n\n\n9\n221\n48%\n72\n2\n0.9%\n\n\n10\n131\n37%\n26\n2\n1.5%\n\n\n11\n280\n45%\n91\n10\n3.6%\n\n\n12\n230\n35%\n87\n6\n2.6%\n\n\n13\n168\n56%\n41\n2\n1.2%"
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#measures",
+    "href": "M06-1/rkr-newsletter-proposal.html#measures",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Measures",
+    "text": "Measures\n\n\n\n\n\n\n\n\nVariable\nMeasurement or coding\nRole in AO1\n\n\n\n\nDesign condition\nPast issues vs. upper-left button (Fall); photo vs. video (Spring)\nIndependent variable\n\n\nIssue date\nPublication date of each weekly issue\nLinks clicks and bookings to the right condition\n\n\nPage views\nViews reported by Canva for each issue\nDenominator for click rate\n\n\nRKR clicks\nClicks to cpp.edu/rkr pages from the RKR section\nNumerator for click rate\n\n\nClick-through rate\nRKR clicks ÷ page views\nPrimary outcome\n\n\nAttributed reservations\nWeekly OpenTable bookings through version-specific links\nSecondary outcome\n\n\nUnusual weeks\nHolidays, breaks, campus events, RKR promotions\nContext flag"
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#baseline-rkr-click-rate-by-issue",
+    "href": "M06-1/rkr-newsletter-proposal.html#baseline-rkr-click-rate-by-issue",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Baseline: RKR Click Rate by Issue",
+    "text": "Baseline: RKR Click Rate by Issue\n\n\nThis is the pre-test baseline that Fall’s button move will be compared against. Clicks to RKR are low across the board, which is exactly the problem AO1 is designed to address."
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#analytics-methods",
+    "href": "M06-1/rkr-newsletter-proposal.html#analytics-methods",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Analytics Methods",
+    "text": "Analytics Methods\n\n\nA/B testing in two phases\nOnly one element changes per phase, so any difference in clicks can be traced to that change.\nTwo-proportion z-test\nCompares click rates between conditions at α = 0.05:\n\\[z = \\frac{\\hat{p}_1 - \\hat{p}_2}{\\sqrt{\\hat{p}(1-\\hat{p})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}}\\]\n\n\nIndependent-samples t-test\nCompares the average weekly OpenTable reservations attributed to each design.\n\n\nWhy these methods\n\nThe z-test is the standard way to compare two rates\nThe t-test fits weekly reservation counts across two groups\nTogether they follow the reader’s path from view → click → booking (Hartemo, Suomi, and Hakala 2016)"
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#clickable-links",
+    "href": "M06-1/rkr-newsletter-proposal.html#clickable-links",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Clickable Links",
+    "text": "Clickable Links\n\n\n\nGroup 9 CEP Report (GitHub Pages)\nGroup 9 GitHub Repository\nThe Restaurant at Kellogg Ranch\nRKR Menu Page\n\n\n\nRKR on Instagram\nCPP Design Toolkit\nQuarto Reveal.js Documentation\nQuarto Pub"
+  },
+  {
+    "objectID": "M06-1/rkr-newsletter-proposal.html#data-notes",
+    "href": "M06-1/rkr-newsletter-proposal.html#data-notes",
+    "title": "Newsletter Design and Reservation Growth",
+    "section": "Data Notes",
+    "text": "Data Notes\n\nFiles: 14 Canva CSV exports in data/concierge-canva/, one per issue\nDuplicates: 1 export was byte-identical to another and was removed with an MD5 check\nIssue order: files are sorted by their export timestamp, which follows publication order\nRKR clicks: any link containing cpp.edu/rkr; no direct OpenTable links appear in the exports\nViews: sum of country rows, which matches total page views reported by Canva\nNot yet available: issue dates, the first issue with the upper-left button, and OpenTable reservations by link"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Module 06: Reveal.js Presentations",
+    "section": "",
+    "text": "This site collects my Module 06 work on building presentation slides with Quarto and Reveal.js."
+  },
+  {
+    "objectID": "index.html#assignments",
+    "href": "index.html#assignments",
+    "title": "Module 06: Reveal.js Presentations",
+    "section": "Assignments",
+    "text": "Assignments\n\nM06-1: RKR Newsletter Proposal Slides\n\nA Reveal.js proposal for my MSDM culminating experience project, testing how the design of The Restaurant at Kellogg Ranch’s section in The Collins Concierge affects reservation clicks. Built on the serif theme with the CPP Design Toolkit colors.\n\n\nOpen the slides\n\nReflection Essay: Advanced Data Wrangling\n\nMy reflection on Reveal.js and the new concepts from this module.\n\n\nRead the essay"
+  },
+  {
+    "objectID": "index.html#source-code",
+    "href": "index.html#source-code",
+    "title": "Module 06: Reveal.js Presentations",
+    "section": "Source Code",
+    "text": "Source Code\nAll files, data, and code are on GitHub."
+  },
+  {
+    "objectID": "reflection-essay.html",
+    "href": "reflection-essay.html",
+    "title": "M06-Reflection Essay-Advanced Data Wrangling",
+    "section": "",
+    "text": "1 Reveal.js Impressions\n\n\n2 Reveal.js Presentation\n\n\n3 New Concepts\n\n\n4 Appendix"
+  }
+]
