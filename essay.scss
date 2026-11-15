@@ -1,0 +1,25 @@
+/*-- scss:defaults --*/
+// Cal Poly Pomona brand colors (CPP Design Toolkit) on the cosmo theme
+$primary: #005030;   // CPP Green
+$secondary: #00838A; // Teal
+$warning: #FFB81C;   // CPP Gold
+$danger: #B52B4C;    // Rose
+$link-color: #00838A;
+$headings-color: #005030;
+$body-bg: #FFFFFF;
+
+/*-- scss:rules --*/
+h1.title { color: #005030; }
+h2 { border-bottom: 3px solid #FFB81C; padding-bottom: 0.2em; }
+blockquote {
+  border-left: 5px solid #FFB81C;
+  background-color: #F2EEE8;
+  padding: 0.6em 1em;
+  color: #121212;
+}
+.slides-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 2px solid #005030;
+  border-radius: 8px;
+}

@@ -3,22 +3,270 @@ title: "M06-Reflection Essay-Advanced Data Wrangling"
 output-file: reflection-essay.html
 author: "Leeann Lewis-Waddell"
 date: today
-format: 
-  html: 
+format:
+  html:
     toc: true
     toc-depth: 4
+    toc-expand: 1
+    toc-location: left
     number-sections: true
     code-link: true
+    code-fold: show
+    code-overflow: wrap
+    code-tools: true
     embed-resources: true
 editor: visual
-execute: 
+execute:
   freeze: auto
 ---
 
-# Reveal.js Impressions
+```{r}
+#| label: setup
+#| include: false
 
-# Reveal.js Presentation
+library(dplyr)
+library(readr)
+library(purrr)
+library(stringr)
+library(tidyr)
+library(ggplot2)
+library(knitr)
 
-# New Concepts
+files  <- sort(list.files("M06-1/data/concierge-canva", pattern = "\\.csv$", full.names = TRUE))
+files_u <- files[!duplicated(tools::md5sum(files))]
 
-# Appendix
+concierge <- map_dfr(seq_along(files_u), \(i) {
+  read_csv(files_u[i], show_col_types = FALSE) |> mutate(issue = i)
+})
+```
+
+::: callout-note
+## About this report
+
+This report reflects on Module 06. @sec-impressions covers my impressions of Reveal.js, @sec-presentation covers the presentation I built, and @sec-concepts walks through three data wrangling functions from the advanced wrangling lecture, using real data from my project.
+:::
+
+# Reveal.js Impressions {#sec-impressions}
+
+> **Prompt:** What is your impression of Reveal.js presentations? Describe their capabilities, and compare their strengths and weaknesses with PowerPoint.
+
+## First Impression
+
+My first impression was that Reveal.js turns a slide deck into a web page you can code, which I find both efficient and practical. Watching Dr. Lange build slides from a YAML header, and then Jarrod restyle an entire deck by changing one line in the theme, showed me that the design lives in settings and style files instead of in hundreds of manual clicks. That felt unfamiliar at first, since I usually design in Canva (I don't particularly care for PPT – especially the online version – it's very static and limited in its ability to manipulate), but it also felt more reliable. Once a style rule is written, every slide follows it.
+
+## Capabilities
+
+The workshop showed four groups of features. Each tab below summarizes one group.
+
+::: panel-tabset
+### Structure
+
+- **YAML header:** title, subtitle, author, theme, slide numbers, footer, and logo, all set in one place
+- **Incremental lists:** bullets appear one at a time, either globally or for one list
+- **Manual pauses:** three dots (`. . .`) reveal any content in steps, not just lists
+- **Columns, asides, and footnotes:** side-by-side layouts and small notes that stay out of the way
+- **Scrollable and smaller slides:** handle content that will not fit on one screen
+
+### Engagement
+
+- **Navigation menu and overview mode:** jump to any section, and see sections stacked vertically under their headings
+- **Speaker view:** notes and a timer that only the presenter sees
+- **Slide zoom and chalkboard:** zoom into a detail or draw on the slide
+- **Multiplex:** the presenter controls what the audience sees on their own devices
+
+### Design
+
+- **Ready-made themes:** a full restyle with one word, such as `serif` or `moon`
+- **Sass variables and CSS:** custom colors, fonts, and rules, so a deck can follow a brand guide
+- **Transitions and fragments:** zoom, fade, highlight, and dim effects for individual elements
+
+### Code and Data
+
+- **Code chunks:** R code runs when the slides render, so charts and numbers come straight from the data
+- **Line highlighting:** walk the audience through code one line at a time
+- **Output location:** show results on the next click or the next slide
+- **Publishing:** one command puts the slides on Quarto Pub or GitHub Pages
+:::
+
+## Compared With PowerPoint
+
+| Area | Reveal.js | PowerPoint |
+|:-----------------------|:-----------------------|:-----------------------|
+| **Reproducibility** | Charts and numbers update when the data changes | Charts are pasted in and go stale |
+| **Consistency** | One style file controls every slide | Each slide can drift from the template |
+| **Sharing** | A single link that opens in any browser | A file to email, often with version conflicts |
+| **Code** | Runs and highlights live code | Code is pasted as text or images |
+| **Learning curve** | Requires YAML, Markdown, and some CSS | Familiar point-and-click design |
+| **Fine visual control** | Precise layouts take code and testing | Drag and drop anything anywhere |
+| **Collaboration** | Works through Git and GitHub | Real-time co-editing in Microsoft 365 |
+
+: Reveal.js versus PowerPoint
+
+The biggest strength of Reveal.js is that it is reproducible. If The Collins Concierge sends a new export next week, my chart updates when I render. The main weakness is the learning curve. Small visual changes that take seconds in PowerPoint, such as nudging a logo, can take several renders to get right.
+
+# My Presentation {#sec-presentation}
+
+> **Prompt:** Share a link to your published Reveal.js presentation, which must include at least one reproducible chart or table. Briefly describe the presentation and what you learned from the experience.
+
+## Link
+
+::: callout-tip
+## View the slides
+
+**Newsletter Design and Reservation Growth:** <https://lewiswaddell.github.io/M06/M06-1/rkr-newsletter-proposal.html>
+:::
+
+## Reproducible Chart
+
+The presentation reads 14 Canva exports from The Collins Concierge, removes one duplicate file, and builds the chart below every time it renders. @fig-baseline is the same chart rebuilt here from the same files.
+
+```{r}
+#| label: fig-baseline
+#| fig-cap: "RKR click rate by Concierge issue, the baseline for the Fall 2026 test"
+#| code-fold: true
+#| fig-width: 10
+#| fig-height: 4.5
+
+issue_summary <- concierge |>
+  group_by(issue) |>
+  summarise(
+    views      = sum(Count[Dimension == "country"]),
+    rkr_clicks = sum(Count[Dimension == "link" & str_detect(Name, "cpp\\.edu/rkr")]),
+    .groups = "drop") |>
+  mutate(ctr = rkr_clicks / views)
+
+pooled <- sum(issue_summary$rkr_clicks) / sum(issue_summary$views)
+
+ggplot(issue_summary, aes(factor(issue), ctr * 100)) +
+  geom_col(fill = "#005030", width = 0.7) +
+  geom_hline(yintercept = pooled * 100, colour = "#FFB81C",
+             linewidth = 1.2, linetype = "dashed") +
+  labs(x = "Concierge issue (oldest to newest)", y = "RKR clicks per 100 views") +
+  theme_minimal(base_size = 13)
+```
+
+Across `r nrow(issue_summary)` issues and `r format(sum(issue_summary$views), big.mark = ",")` page views, readers clicked through to the RKR website `r sum(issue_summary$rkr_clicks)` times, a pooled rate of `r scales::percent(pooled, accuracy = 0.1)`. These numbers are written with inline code, so they update with the data.
+
+## What It Is About
+
+The slides propose **Analytics Objective 1** of my culminating experience project with The Restaurant at Kellogg Ranch (RKR). RKR's section of The Collins Concierge newsletter is mostly text, and its "Reserve a Table" button sits at the bottom. The proposal tests two design changes, one at a time:
+
+1.  **Fall 2026:** move the button to the upper left and compare click rates with past issues.
+2.  **Spring 2027:** alternate image and video versions of the section, with the button fixed.
+
+The deck follows the full proposal storyline: problem statement, analytics objective, literature review, data and sampling, data wrangling, measures, the baseline chart, and analytics methods. It uses the serif theme, restyled with the Cal Poly Pomona brand colors from the CPP Design Toolkit.
+
+## What I Learned
+
+- **Real data surfaces real problems.** The Canva exports had no issue dates and one duplicate file. Building the deck forced me to clean and document the data, which I would have skipped if I had pasted a chart into PowerPoint.
+- **The measure has to match the button.** The "Reserve a Table" button links to the RKR website, not straight to OpenTable. That changed my metric from reservation clicks to clicks to the RKR site, the step right before booking.
+- **Styling is layered.** A ready-made theme handles most of the design, a Sass file overrides colors and fonts, and a CSS file adds custom touches. Knowing which layer to edit saved a lot of time.
+- **Publishing is part of the work.** Setting the repo up as a Quarto website with GitHub Pages gave the whole module one clean link, and the same setup will work for the rest of the course.
+
+# New Concepts {#sec-concepts}
+
+> **Prompt:** Pick three functions from different categories introduced in the advanced data wrangling lecture. Explain when to use each one, and give a coding example with output.
+
+The lecture grouped functions by what they do to two tables. I picked one function from each of three categories and applied it to the Concierge link data from my slides.
+
+| Category | Function | What it does |
+|:-----------------|:-----------------|:------------------------------------|
+| Mutating join | `left_join()` | Adds columns from a second table, keeping every row of the first |
+| Filtering join | `anti_join()` | Keeps rows of the first table that have **no** match in the second |
+| Set operation | `intersect()` | Keeps only rows that appear in **both** tables |
+
+: Three functions, three categories
+
+```{r}
+#| label: links
+#| code-fold: true
+#| code-summary: "Show the code that prepares the link data"
+
+links <- concierge |>
+  filter(Dimension == "link") |>
+  mutate(domain = str_extract(Name, "(?<=//)[^/]+") |> str_remove("^www\\.")) |>
+  select(issue, domain, url = Name, clicks = Count)
+
+head(links, 4) |> kable()
+```
+
+## Mutating Join: `left_join()`
+
+**When to use it:** when I have a main table and want to bring in extra information from a lookup table, without losing any rows from the main table. Rows with no match get `NA`, which makes gaps easy to spot.
+
+**Example:** Canva only gives raw URLs. I wrote a small lookup table that labels each website by type, then joined it to the link data to see what Concierge readers click on most.
+
+```{r}
+#| label: left-join
+
+site_types <- tribble(
+  ~domain,                              ~link_type,
+  "cpp.edu",                            "CPP website (incl. RKR)",
+  "canvas.cpp.edu",                     "Canvas",
+  "forms.cloud.microsoft",              "Forms and surveys",
+  "forms.gle",                          "Forms and surveys",
+  "docs.google.com",                    "Forms and surveys",
+  "qualtricsxmnd4wcnjt2.qualtrics.com", "Forms and surveys",
+  "eventbrite.com",                     "Events",
+  "collinsgiving2026.eventbrite.com",   "Events",
+  "secure6.saashr.com",                 "Jobs and careers",
+  "careers.aramark.com",                "Jobs and careers",
+  "cpp.joinhandshake.com",              "Jobs and careers"
+)
+
+links |>
+  left_join(site_types, by = "domain") |>
+  mutate(link_type = coalesce(link_type, "Other")) |>
+  count(link_type, wt = clicks, name = "clicks", sort = TRUE) |>
+  mutate(share = scales::percent(clicks / sum(clicks), accuracy = 1)) |>
+  kable()
+```
+
+Every link row survived the join. Links not in my lookup came back as `NA`, and `coalesce()` relabeled them as "Other." The result shows that forms and surveys dominate reader clicks, which is useful context: the RKR section competes with a lot of calls to action in each issue.
+
+## Filtering Join: `anti_join()`
+
+**When to use it:** when I need to find what is **missing**. It returns rows from the first table that have no match in the second, without adding any columns. It is ideal for quality checks, such as finding records that were never matched.
+
+**Example:** which Concierge issues produced **zero** clicks to the RKR website?
+
+```{r}
+#| label: anti-join
+
+all_issues <- concierge |> distinct(issue)
+
+issues_with_rkr <- links |>
+  filter(str_detect(url, "cpp\\.edu/rkr")) |>
+  distinct(issue)
+
+all_issues |>
+  anti_join(issues_with_rkr, by = "issue") |>
+  kable()
+```
+
+Issues 1 and 2 had no RKR clicks at all. Rather than filtering on a count of zero, `anti_join()` answers the question directly: these issues exist in the full list but never appear in the list of issues with RKR clicks.
+
+## Set Operation: `intersect()`
+
+**When to use it:** when two tables have the **same columns** and I want only the rows they share. Unlike joins, set operations compare entire rows, so both inputs must have identical structures.
+
+**Example:** which websites did readers click in **both** the first half of the window (issues 1 to 6) and the second half (issues 7 to 13)? These are the links that keep showing up, so they compete with RKR week after week.
+
+```{r}
+#| label: intersect
+
+early <- links |> filter(issue <= 6, !is.na(domain)) |> distinct(domain)
+late  <- links |> filter(issue >= 7, !is.na(domain)) |> distinct(domain)
+
+intersect(early, late) |>
+  arrange(domain) |>
+  kable()
+```
+
+Out of `r n_distinct(early$domain)` sites in the first half and `r n_distinct(late$domain)` in the second, `r nrow(intersect(early, late))` appear in both. The RKR website (`cpp.edu`) is one of them, which tells me the RKR section has a steady presence. The Fall test is about turning that presence into more clicks.
+
+# Appendix {#sec-appendix .unnumbered}
+
+- **GitHub repository:** <https://github.com/lewiswaddell/M06>
+- **Module 06 site (GitHub Pages):** <https://lewiswaddell.github.io/M06/>
+- **Reveal.js slides:** <https://lewiswaddell.github.io/M06/M06-1/rkr-newsletter-proposal.html>

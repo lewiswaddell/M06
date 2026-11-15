@@ -10,3 +10,5 @@ _to_delete/
 # rendered copies outside docs/ (docs/ is what GitHub Pages serves)
 /*.html
 /M06-1/*.html
+
+**/*.quarto_ipynb
